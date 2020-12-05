@@ -3,12 +3,13 @@
 module Main where
 
 import qualified Data.Text as T
+import qualified Data.Text.IO as TI
 import Data.Text.Read
 
 main :: IO ()
 main = do
-  s <- readFile "input.txt"
-  let matched = filter (matchesRule . toRuleInputPair) $ T.lines $ T.pack s
+  s <- TI.readFile "input.txt"
+  let matched = filter (matchesRule . toRuleInputPair) $ T.lines s
   print (length matched)
 
 parseInt :: Integral p => T.Text -> p
